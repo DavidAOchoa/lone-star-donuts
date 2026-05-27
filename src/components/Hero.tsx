@@ -36,16 +36,15 @@ export default function Hero() {
     <section className="pt-[72px] bg-espresso">
       {/* Ticker */}
       <div className="bg-star-red flex justify-center overflow-hidden py-[9px]">
-        <div className="flex items-center gap-14 px-10 font-display text-sm tracking-[.14em] text-cream whitespace-nowrap">
+        <div className="flex items-center justify-center flex-wrap gap-x-10 gap-y-1 px-6 font-display text-sm tracking-[.14em] text-cream text-center">
           {TICKER_ITEMS.map((item) => (
-            <span key={item}>★ {item}</span>
+            <span key={item} className="whitespace-nowrap">★ {item}</span>
           ))}
         </div>
       </div>
 
       {/* Hero grid */}
-      <div className="mx-auto max-w-6xl px-6 sm:px-8 py-20 grid gap-16 items-center relative overflow-hidden"
-        style={{ gridTemplateColumns: '3fr 2fr' }}>
+      <div className="mx-auto max-w-6xl px-6 sm:px-8 py-12 lg:py-20 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-10 lg:gap-16 items-start lg:items-center relative overflow-hidden">
 
         {/* Background star watermark */}
         <div
