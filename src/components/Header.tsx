@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Phone, Menu, X, ShoppingBag } from 'lucide-react';
+import { Menu, X, ShoppingBag } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { cn } from '@/lib/cn';
 
 const navLinks = [
-  { label: 'Our Menu', href: '/menu' },
+  { label: 'Menu', href: '/menu' },
   { label: 'Our Story', href: '/story' },
   { label: 'Find Us', href: '/locations' },
 ];
@@ -19,33 +19,34 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-cream border-b-2 border-amber/20 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-espresso border-b border-cream/[0.08]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-[72px]">
+
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <span className="text-3xl" aria-hidden="true">🍩</span>
+          <Link href="/" className="flex items-center gap-3 group">
+            <span className="text-star-red text-2xl leading-none" aria-hidden="true">★</span>
             <div className="leading-tight">
-              <span className="font-display font-bold text-xl text-brown block">
+              <div className="font-display text-2xl text-cream tracking-[.08em] leading-none">
                 Lone Star Donuts
-              </span>
-              <span className="text-xs text-warm-gray tracking-wide">
-                Round Rock, TX · Est. 1987
-              </span>
+              </div>
+              <div className="text-[10px] text-cream/40 tracking-[.14em] uppercase mt-0.5">
+                Flatonia, TX · Est. 1987
+              </div>
             </div>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'text-base font-medium px-4 py-2 rounded-lg transition-colors',
+                  'font-bold text-sm tracking-[.1em] uppercase transition-colors',
                   pathname === link.href
-                    ? 'bg-amber/15 text-amber-dark font-bold'
-                    : 'text-brown-light hover:text-amber hover:bg-amber/10'
+                    ? 'text-star-red'
+                    : 'text-cream/60 hover:text-cream'
                 )}
               >
                 {link.label}
@@ -56,31 +57,29 @@ export default function Header() {
           {/* Right: phone + cart */}
           <div className="flex items-center gap-3">
             <a
-              href="tel:+15125550123"
-              className="hidden sm:flex items-center gap-2 bg-amber text-cream px-4 py-2 rounded-full font-bold text-base hover:bg-amber-dark transition-colors"
-              aria-label="Call us"
+              href="tel:+13615550123"
+              className="hidden sm:block border-2 border-star-red text-cream font-display text-xl tracking-[.1em] px-5 py-2 hover:bg-star-red transition-colors"
+              aria-label="Call us at (361) 555-0123"
             >
-              <Phone size={16} strokeWidth={2.5} />
-              <span>(512) 555-0123</span>
+              (361) 555-0123
             </a>
 
             <button
               onClick={openCart}
-              className="relative p-2.5 rounded-full bg-brown text-cream hover:bg-brown-light transition-colors"
+              className="relative p-2.5 border border-cream/20 text-cream hover:border-cream/50 transition-colors"
               aria-label={`Open cart, ${count} items`}
             >
               <ShoppingBag size={20} />
               {count > 0 && (
-                <span className="absolute -top-1 -right-1 min-w-[20px] h-5 bg-rust text-cream text-xs font-bold rounded-full flex items-center justify-center px-1">
+                <span className="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 bg-star-red text-cream text-xs font-bold rounded-full flex items-center justify-center px-1">
                   {count}
                 </span>
               )}
             </button>
 
-            {/* Mobile menu toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 rounded-lg text-brown hover:bg-amber/10 transition-colors"
+              className="md:hidden p-2 text-cream/60 hover:text-cream transition-colors"
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             >
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -90,28 +89,25 @@ export default function Header() {
 
         {/* Mobile dropdown */}
         {mobileOpen && (
-          <div className="md:hidden border-t border-amber/20 py-4 space-y-1">
+          <div className="md:hidden border-t border-cream/[0.08] py-4 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 className={cn(
-                  'block text-lg font-medium px-4 py-3 rounded-lg transition-colors',
-                  pathname === link.href
-                    ? 'bg-amber/15 text-amber-dark font-bold'
-                    : 'text-brown-light hover:text-amber hover:bg-amber/10'
+                  'block font-bold text-sm tracking-[.1em] uppercase px-2 py-3 transition-colors',
+                  pathname === link.href ? 'text-star-red' : 'text-cream/60 hover:text-cream'
                 )}
               >
                 {link.label}
               </Link>
             ))}
             <a
-              href="tel:+15125550123"
-              className="flex items-center gap-2 text-lg font-bold text-amber px-4 py-3"
+              href="tel:+13615550123"
+              className="block font-display text-2xl text-star-amber tracking-[.06em] px-2 py-2"
             >
-              <Phone size={18} />
-              (512) 555-0123
+              (361) 555-0123
             </a>
           </div>
         )}

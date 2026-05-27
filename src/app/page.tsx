@@ -6,23 +6,23 @@ const quickLinks = [
   {
     href: '/menu',
     emoji: '🍩',
-    title: 'Our Menu',
+    title: 'OUR MENU',
     desc: 'Browse all our donuts and kolaches — made fresh every morning.',
-    cta: 'See the Menu',
+    cta: 'SEE THE MENU',
   },
   {
     href: '/story',
     emoji: '📖',
-    title: 'Our Story',
+    title: 'OUR STORY',
     desc: 'Three generations of the Martinez family, baking since 1987.',
-    cta: 'Meet the Family',
+    cta: 'MEET THE FAMILY',
   },
   {
     href: '/locations',
     emoji: '📍',
-    title: 'Find Us',
+    title: 'FIND US',
     desc: 'Hours, address, and directions. Open daily 6am – 2pm.',
-    cta: 'Get Directions',
+    cta: 'GET DIRECTIONS',
   },
 ];
 
@@ -31,31 +31,33 @@ export default function Home() {
     <>
       <Hero />
 
-      {/* Quick-access cards */}
-      <section className="py-16 px-4 sm:px-6 bg-cream-dark">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="font-display font-bold text-3xl text-brown text-center mb-10">
-            What are you looking for?
+      {/* Quick-access section */}
+      <section className="bg-espresso-dark border-t border-cream/[0.08]">
+        <div className="mx-auto max-w-6xl px-4 sm:px-8 py-16">
+          <h2 className="font-display text-4xl text-cream tracking-[.06em] text-center mb-10">
+            WHAT ARE YOU LOOKING FOR?
           </h2>
-          <div className="grid sm:grid-cols-3 gap-6">
+
+          {/* Cards with 1px gap lines */}
+          <div className="grid sm:grid-cols-3 gap-px bg-cream/[0.06]">
             {quickLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="group bg-white rounded-2xl p-7 shadow-md border-2 border-transparent hover:border-amber/40 hover:shadow-xl transition-all flex flex-col"
+                className="group bg-espresso-dark p-8 flex flex-col hover:bg-espresso transition-colors"
               >
                 <span className="text-5xl mb-5 block" aria-hidden="true">
                   {link.emoji}
                 </span>
-                <h3 className="font-display font-bold text-2xl text-brown mb-2">
+                <h3 className="font-display text-2xl text-cream tracking-[.06em] mb-2">
                   {link.title}
                 </h3>
-                <p className="text-warm-gray leading-relaxed mb-6 flex-1">
+                <p className="text-cream/40 text-sm leading-relaxed mb-6 flex-1">
                   {link.desc}
                 </p>
-                <span className="inline-flex items-center gap-2 text-amber font-bold text-base group-hover:gap-3 transition-all">
+                <span className="inline-flex items-center gap-2 font-display text-lg text-star-red tracking-[.1em] group-hover:gap-3 transition-all">
                   {link.cta}
-                  <ChevronRight size={18} strokeWidth={2.5} />
+                  <ChevronRight size={16} strokeWidth={2.5} />
                 </span>
               </Link>
             ))}

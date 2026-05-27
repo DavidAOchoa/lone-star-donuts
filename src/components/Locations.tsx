@@ -1,114 +1,117 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Phone, Mail } from 'lucide-react';
+import { MapPin, Mail } from 'lucide-react';
 
-const hours = [
-  { day: 'Monday – Friday', time: '6:00 am – 2:00 pm' },
-  { day: 'Saturday', time: '5:30 am – 1:00 pm' },
-  { day: 'Sunday', time: '7:00 am – 12:00 pm (noon)' },
+const schedule = [
+  { day: 'Mon – Fri', time: '6:00 AM – 2:00 PM' },
+  { day: 'Saturday',  time: '5:30 AM – 1:00 PM' },
+  { day: 'Sunday',    time: '7:00 AM – 12:00 PM' },
 ];
 
 export default function Locations() {
   return (
-    <section id="locations" className="py-20 px-4 sm:px-6 bg-cream-dark">
-      <div className="mx-auto max-w-6xl">
-        {/* Section header */}
-        <div className="text-center mb-14">
-          <span className="text-xs text-amber font-bold uppercase tracking-widest">
+    <section className="bg-espresso pt-[72px] min-h-screen">
+      <div className="mx-auto max-w-6xl px-4 sm:px-8 pb-20">
+
+        {/* Header */}
+        <div className="pt-16 mb-16 border-t border-cream/[0.08]">
+          <div className="text-[10px] tracking-[.18em] uppercase text-cream/35 mb-1.5">
             Come See Us
-          </span>
-          <h2 className="mt-2 font-display font-bold text-4xl sm:text-5xl text-brown">
-            Find Us &amp; Hours
-          </h2>
+          </div>
+          <h1 className="font-display text-6xl sm:text-7xl text-cream tracking-[.04em] leading-none">
+            FIND US
+          </h1>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
+
           {/* Hours card */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-3xl p-8 shadow-md border border-amber/10"
+            className="border border-cream/10 overflow-hidden"
           >
-            <div className="flex items-center gap-3 mb-7">
-              <div className="w-12 h-12 bg-amber/15 rounded-xl flex items-center justify-center">
-                <Clock size={24} className="text-amber" />
-              </div>
-              <h3 className="font-display font-bold text-2xl text-brown">
-                Store Hours
-              </h3>
+            {/* We're Open banner */}
+            <div className="bg-star-red flex items-center justify-between px-8 py-5">
+              <span className="font-display text-[1.85rem] tracking-[.1em] text-cream leading-none">
+                WE&apos;RE OPEN NOW
+              </span>
+              <div className="w-3 h-3 rounded-full bg-cream pulse-dot flex-shrink-0" aria-hidden="true" />
             </div>
 
-            <div className="space-y-4">
-              {hours.map(({ day, time }) => (
-                <div
-                  key={day}
-                  className="flex items-start justify-between gap-4 py-3 border-b border-amber/10 last:border-0"
-                >
-                  <span className="font-medium text-brown text-base">{day}</span>
-                  <span className="font-bold text-amber text-base text-right">
-                    {time}
-                  </span>
+            {/* Body */}
+            <div className="bg-espresso-dark px-8 py-7">
+              {/* Today big */}
+              <div className="mb-6 pb-6 border-b border-cream/[0.08]">
+                <div className="text-[10px] tracking-[.18em] uppercase text-cream/35 mb-2">
+                  Today&apos;s Hours
                 </div>
-              ))}
-            </div>
+                <div className="font-display text-5xl text-cream tracking-[.04em] leading-none">
+                  6AM – 2PM
+                </div>
+                <div className="text-cream/40 text-sm mt-2">Monday – Friday</div>
+              </div>
 
-            <p className="mt-6 text-warm-gray text-sm italic">
-              * We often sell out early on weekends. Come before 10am for the
-              best selection!
-            </p>
+              {/* Full schedule */}
+              <div className="space-y-3 mb-6 pb-6 border-b border-cream/[0.08]">
+                {schedule.map(({ day, time }) => (
+                  <div key={day} className="flex items-baseline justify-between gap-4">
+                    <span className="text-cream/45 font-medium">{day}</span>
+                    <span className="font-display text-xl tracking-[.06em] text-cream/80">{time}</span>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-cream/30 text-sm italic">
+                * We often sell out on weekends. Come before 10am for the best selection!
+              </p>
+            </div>
           </motion.div>
 
-          {/* Contact + Location card */}
+          {/* Contact column */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="space-y-6"
+            className="flex flex-col gap-4"
           >
-            {/* Phone — large and prominent */}
-            <div className="bg-brown text-cream rounded-3xl p-8 shadow-md">
-              <p className="text-cream/70 font-medium mb-2 text-sm uppercase tracking-widest">
-                Give us a call
-              </p>
+            {/* Phone — big and prominent */}
+            <div className="bg-espresso-dark border border-cream/10 px-8 py-7 flex-1">
+              <div className="text-[10px] tracking-[.18em] uppercase text-cream/35 mb-4">
+                Give Us a Call
+              </div>
               <a
-                href="tel:+15125550123"
-                className="flex items-center gap-4 group"
+                href="tel:+13615550123"
+                className="block font-display text-5xl text-star-amber tracking-[.04em] hover:text-star-red transition-colors leading-none mb-3"
               >
-                <div className="w-14 h-14 bg-amber/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Phone size={28} className="text-amber" />
-                </div>
-                <span className="font-display font-bold text-4xl text-cream group-hover:text-amber transition-colors">
-                  (512) 555-0123
-                </span>
+                (361) 555-0123
               </a>
-              <p className="text-cream/60 text-sm mt-4">
+              <p className="text-cream/40 text-sm">
                 Box orders, catering, and special requests welcome.
               </p>
             </div>
 
             {/* Address */}
-            <div className="bg-white rounded-3xl p-6 shadow-md border border-amber/10">
+            <div className="bg-espresso-dark border border-cream/10 px-8 py-6">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-amber/15 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <MapPin size={24} className="text-amber" />
-                </div>
+                <MapPin size={22} className="text-star-red mt-0.5 flex-shrink-0" />
                 <div>
-                  <h3 className="font-display font-bold text-xl text-brown mb-1">
-                    Our Location
-                  </h3>
-                  <address className="not-italic text-brown-light text-base leading-relaxed">
-                    1423 Round Rock Ave<br />
-                    Round Rock, TX 78681
+                  <div className="font-display text-xl text-cream tracking-[.06em] mb-1">
+                    OUR LOCATION
+                  </div>
+                  <address className="not-italic text-cream/55 leading-relaxed">
+                    208 E South Main St<br />
+                    Flatonia, TX 78941
                   </address>
                   <a
-                    href="https://maps.google.com/?q=1423+Round+Rock+Ave,+Round+Rock,+TX+78681"
+                    href="https://maps.google.com/?q=208+E+South+Main+St,+Flatonia,+TX+78941"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block mt-3 text-amber font-bold text-sm hover:underline"
+                    className="inline-block mt-3 font-bold text-sm tracking-[.06em] uppercase text-star-red hover:underline"
                   >
                     Get Directions →
                   </a>
@@ -117,18 +120,14 @@ export default function Locations() {
             </div>
 
             {/* Email */}
-            <div className="bg-white rounded-3xl p-6 shadow-md border border-amber/10">
+            <div className="bg-espresso-dark border border-cream/10 px-8 py-5">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-amber/15 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Mail size={24} className="text-amber" />
-                </div>
+                <Mail size={20} className="text-star-red flex-shrink-0" />
                 <div>
-                  <h3 className="font-medium text-warm-gray text-sm mb-0.5">
-                    Email Us
-                  </h3>
+                  <div className="text-[10px] tracking-[.14em] uppercase text-cream/35 mb-0.5">Email</div>
                   <a
                     href="mailto:hello@lonestardonuts.com"
-                    className="font-bold text-brown text-base hover:text-amber transition-colors"
+                    className="font-bold text-cream/80 hover:text-cream transition-colors"
                   >
                     hello@lonestardonuts.com
                   </a>

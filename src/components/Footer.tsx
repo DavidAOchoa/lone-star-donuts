@@ -1,52 +1,58 @@
+import Link from 'next/link';
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-brown text-cream py-12 px-4 sm:px-6">
+    <footer className="bg-espresso-dark border-t border-cream/[0.08] py-12 px-4 sm:px-8">
       <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-8">
           {/* Brand */}
-          <div className="text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
-              <span className="text-2xl" aria-hidden="true">🍩</span>
-              <span className="font-display font-bold text-xl">
+          <div>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="text-star-red text-xl leading-none" aria-hidden="true">★</span>
+              <span className="font-display text-2xl text-cream tracking-[.08em]">
                 Lone Star Donuts
               </span>
             </div>
-            <p className="text-cream/60 text-sm">
-              Round Rock, TX · Est. 1987 · Family-Owned &amp; Operated
+            <p className="text-cream/30 text-sm tracking-wide">
+              Flatonia, TX · Est. 1987 · Family-Owned &amp; Operated
             </p>
           </div>
 
-          {/* Quick links */}
-          <nav className="flex gap-6 text-cream/70 text-sm font-medium">
-            <a href="#menu" className="hover:text-amber transition-colors">
-              Menu
-            </a>
-            <a href="#story" className="hover:text-amber transition-colors">
-              Our Story
-            </a>
-            <a href="#locations" className="hover:text-amber transition-colors">
-              Find Us
-            </a>
+          {/* Nav */}
+          <nav className="flex flex-wrap gap-x-8 gap-y-2">
+            {[
+              { label: 'Menu',      href: '/menu' },
+              { label: 'Our Story', href: '/story' },
+              { label: 'Find Us',   href: '/locations' },
+            ].map(({ label, href }) => (
+              <Link
+                key={href}
+                href={href}
+                className="text-cream/45 text-sm font-bold tracking-[.08em] uppercase hover:text-cream transition-colors"
+              >
+                {label}
+              </Link>
+            ))}
             <a
-              href="tel:+15125550123"
-              className="hover:text-amber transition-colors"
+              href="tel:+13615550123"
+              className="text-cream/45 text-sm font-bold tracking-[.08em] uppercase hover:text-cream transition-colors"
             >
-              (512) 555-0123
+              (361) 555-0123
             </a>
           </nav>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-cream/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-cream/40 text-sm">
+        <div className="pt-6 border-t border-cream/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3 text-cream/25 text-sm">
           <p>© {year} Lone Star Donuts. All rights reserved.</p>
           <p>
             Site by{' '}
             <a
-              href="https://davidochoa.dev"
+              href="https://portfolio-v3-neon-theta.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-amber/70 hover:text-amber transition-colors"
+              className="text-star-amber/60 hover:text-star-amber transition-colors"
             >
               David Ochoa
             </a>

@@ -2,98 +2,123 @@
 
 import { motion } from 'framer-motion';
 
+const stats = [
+  { number: '36+', label: 'Years in Business' },
+  { number: '3',   label: 'Generations of Bakers' },
+  { number: '4AM', label: 'Every Single Morning' },
+];
+
 export default function Story() {
   return (
-    <section id="story" className="py-20 px-4 sm:px-6 bg-cream">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Text */}
+    <section className="bg-espresso pt-[72px] min-h-screen">
+      <div className="mx-auto max-w-6xl px-4 sm:px-8 pb-20">
+
+        {/* Header */}
+        <div className="pt-16 mb-16 border-t border-cream/[0.08]">
+          <div className="text-[10px] tracking-[.18em] uppercase text-cream/35 mb-1.5">
+            About Us
+          </div>
+          <h1 className="font-display text-6xl sm:text-7xl text-cream tracking-[.04em] leading-none">
+            OUR STORY
+          </h1>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-20 items-start">
+          {/* Left: bio */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-xs text-amber font-bold uppercase tracking-widest">
-              Our Story
-            </span>
-            <h2 className="mt-2 font-display font-bold text-4xl sm:text-5xl text-brown leading-tight mb-6">
-              Baked with Love Since 1987
-            </h2>
-            <div className="space-y-5 text-lg text-brown-light leading-relaxed">
+            <div className="space-y-6 text-lg text-cream/60 leading-relaxed mb-12">
               <p>
-                Lone Star Donuts started as a small kitchen on the back porch of
-                the Martinez family home in Round Rock, Texas. Grandma Rosa's
-                secret glazed recipe — still unchanged — drew neighbors from
-                three streets over every Saturday morning.
+                Lone Star Donuts started as a small kitchen on the back porch of the
+                Martinez family home in Flatonia, Texas. Grandma Rosa&apos;s secret glazed
+                recipe — still unchanged — drew neighbors from three streets over every
+                Saturday morning.
               </p>
               <p>
-                By 1991, we opened our first shop on Main Street. Word spread
-                the way only good food can: one satisfied customer at a time.
-                Three generations later, we&apos;re still using the same
-                handwritten recipe cards, the same cast-iron glazing bowls, and
-                the same 4am wake-up call.
+                By 1991, we opened our first shop on Main Street. Word spread the way
+                only good food can: one satisfied customer at a time. Three generations
+                later, we&apos;re still using the same handwritten recipe cards, the same
+                cast-iron glazing bowls, and the same 4am wake-up call.
               </p>
               <p>
-                Everything is mixed, shaped, proofed, and fried right here —
-                never shipped in, never frozen. If you come after noon, you
-                might be too late. That&apos;s a promise we&apos;re proud to keep.
+                Everything is mixed, shaped, proofed, and fried right here — never
+                shipped in, never frozen. If you come after noon, you might be too
+                late. That&apos;s a promise we&apos;re proud to keep.
               </p>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-8">
-              {[
-                { number: '36+', label: 'Years in business' },
-                { number: '3', label: 'Generations of bakers' },
-                { number: '4am', label: 'Every single morning' },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <div className="font-display font-bold text-4xl text-amber">
-                    {stat.number}
+            {/* Stats */}
+            <div className="border-t border-cream/[0.08]">
+              {stats.map(({ number, label }) => (
+                <div
+                  key={label}
+                  className="flex items-baseline gap-6 py-5 border-b border-cream/[0.08]"
+                >
+                  <div className="font-display text-5xl text-star-amber tracking-[.02em] w-28 flex-shrink-0">
+                    {number}
                   </div>
-                  <div className="text-warm-gray font-medium mt-0.5">
-                    {stat.label}
+                  <div className="text-cream/50 font-bold text-sm tracking-[.08em] uppercase">
+                    {label}
                   </div>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* Visual */}
+          {/* Right: visual */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="relative"
+            className="space-y-3"
           >
-            {/* Main card */}
+            {/* Big feature card */}
             <div
-              className="rounded-3xl w-full aspect-square flex items-center justify-center text-[120px] shadow-xl"
-              style={{
-                background:
-                  'linear-gradient(135deg, #FFF8DC 0%, #FFE082 50%, #FFC832 100%)',
-              }}
-              aria-hidden="true"
+              className="w-full aspect-square flex items-center justify-center relative overflow-hidden border border-cream/[0.06]"
+              style={{ background: 'linear-gradient(135deg, #251408 0%, #1C0F05 100%)' }}
             >
-              🍩
+              {/* Background star */}
+              <div
+                className="absolute inset-0 flex items-center justify-center text-star-red/[0.06] font-sans leading-none select-none"
+                style={{ fontSize: '400px' }}
+                aria-hidden="true"
+              >★</div>
+              <div className="relative z-10 text-center">
+                <div className="text-[120px] leading-none mb-4" aria-hidden="true">🍩</div>
+                <div className="font-display text-4xl text-cream tracking-[.1em]">
+                  HANDCRAFTED
+                </div>
+                <div className="font-display text-2xl text-star-amber tracking-[.14em] mt-1">
+                  NEVER FROZEN
+                </div>
+              </div>
+
+              {/* Est. badge */}
+              <div className="absolute bottom-6 right-6 border-2 border-star-red px-4 py-2 text-center">
+                <div className="font-display text-xs tracking-[.18em] text-cream/60">EST.</div>
+                <div className="font-display text-3xl text-star-red tracking-[.04em] leading-none">1987</div>
+                <div className="font-display text-xs tracking-[.14em] text-cream/60">FLATONIA</div>
+              </div>
             </div>
 
-            {/* Floating badge */}
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-5 border border-amber/20">
-              <div className="font-display font-bold text-3xl text-amber">
-                ⭐ 4.9
+            {/* Quote card */}
+            <div className="bg-espresso-mid border border-cream/[0.06] px-8 py-6">
+              <div className="text-star-amber text-3xl font-display tracking-widest mb-3" aria-hidden="true">
+                ★ ★ ★ ★ ★
               </div>
-              <div className="text-brown font-medium text-sm mt-0.5">
-                2,400+ happy customers
+              <p className="text-cream/70 text-base leading-relaxed italic">
+                &ldquo;People drive from San Antonio just for Rosa&apos;s glazed.
+                Been coming here since I was a kid — nothing&apos;s changed, and
+                that&apos;s exactly the point.&rdquo;
+              </p>
+              <div className="text-cream/35 text-sm mt-3 tracking-[.06em] uppercase font-bold">
+                — Local customer, 22 years running
               </div>
-            </div>
-
-            {/* Floating recipe card */}
-            <div className="absolute -top-4 -right-4 bg-brown text-cream rounded-2xl shadow-xl p-4 max-w-[160px]">
-              <div className="text-2xl mb-1" aria-hidden="true">📜</div>
-              <div className="font-bold text-sm">Rosa&apos;s Original</div>
-              <div className="text-cream/70 text-xs mt-0.5">Recipe since 1987</div>
             </div>
           </motion.div>
         </div>

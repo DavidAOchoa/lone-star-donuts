@@ -10,57 +10,54 @@ const categories: DonutCategory[] = ['all', 'glazed', 'cake', 'filled', 'special
 
 export default function Menu() {
   const [active, setActive] = useState<DonutCategory>('all');
-
-  const filtered =
-    active === 'all' ? menuItems : menuItems.filter((i) => i.category === active);
+  const filtered = active === 'all' ? menuItems : menuItems.filter((i) => i.category === active);
 
   return (
-    <section id="menu" className="py-20 px-4 sm:px-6 bg-cream-dark">
-      <div className="mx-auto max-w-6xl">
+    <section className="bg-espresso pt-[72px] min-h-screen">
+      <div className="mx-auto max-w-6xl px-4 sm:px-8 pb-20">
+
         {/* Section header */}
-        <div className="text-center mb-12">
-          <span className="text-xs text-amber font-bold uppercase tracking-widest">
-            Made Fresh Daily
-          </span>
-          <h2 className="mt-2 font-display font-bold text-4xl sm:text-5xl text-brown">
-            Our Donuts &amp; Kolaches
-          </h2>
-          <p className="mt-4 text-lg text-warm-gray max-w-xl mx-auto">
-            Every item baked fresh in our kitchen before sunrise. Come early —
-            we&apos;re sold out by noon most days.
-          </p>
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 pt-16 mb-8 border-t border-cream/[0.08]">
+          <div>
+            <div className="text-[10px] tracking-[.18em] uppercase text-cream/35 mb-1.5">
+              Made Fresh Daily
+            </div>
+            <h1 className="font-display text-6xl sm:text-7xl text-cream tracking-[.04em] leading-none">
+              OUR MENU
+            </h1>
+          </div>
+
+          {/* Category tabs */}
+          <div className="flex flex-wrap">
+            {categories.map((cat, i) => (
+              <button
+                key={cat}
+                onClick={() => setActive(cat)}
+                className={cn(
+                  'font-display text-base tracking-[.1em] px-5 py-2.5 border border-cream/15 transition-colors',
+                  i !== 0 && '-ml-px',
+                  active === cat
+                    ? 'bg-star-red text-cream border-star-red z-10 relative'
+                    : 'text-cream/50 hover:text-cream hover:border-cream/40'
+                )}
+              >
+                {categoryLabels[cat].toUpperCase()}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Category filter */}
-        <div className="flex gap-2 overflow-x-auto pb-2 mb-10 justify-center flex-wrap">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActive(cat)}
-              className={cn(
-                'px-5 py-2.5 rounded-full font-bold text-base transition-colors whitespace-nowrap border-2',
-                active === cat
-                  ? 'bg-brown text-cream border-brown'
-                  : 'bg-white text-brown-light border-amber/20 hover:border-amber hover:text-amber'
-              )}
-            >
-              {categoryLabels[cat]}
-            </button>
-          ))}
-        </div>
-
-        {/* Donut grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Card grid — 1px gaps using bg trick */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-cream/[0.06]">
           {filtered.map((item, i) => (
             <DonutCard key={item.id} item={item} index={i} />
           ))}
         </div>
 
-        {/* Order note */}
-        <p className="text-center text-warm-gray text-sm mt-10">
-          Prices listed per piece. Box orders and catering available —{' '}
-          <a href="tel:+15125550123" className="text-amber font-bold hover:underline">
-            give us a call!
+        <p className="text-cream/30 text-sm mt-8 tracking-wide">
+          Box orders and catering available —{' '}
+          <a href="tel:+13615550123" className="text-star-amber hover:underline font-bold">
+            give us a call.
           </a>
         </p>
       </div>
