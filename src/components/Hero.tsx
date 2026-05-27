@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 const TICKER_ITEMS = [
-  'FRESH BAKED DAILY',
-  'OPEN 6AM – 2PM',
-  'FLATONIA, TX',
-  'EST. 1987',
-  'KOLACHES TOO',
-  'FAMILY OWNED',
+  { label: 'FRESH BAKED DAILY', mobile: true },
+  { label: 'OPEN 6AM – 2PM',    mobile: true },
+  { label: 'FLATONIA, TX',      mobile: true },
+  { label: 'EST. 1987',         mobile: false },
+  { label: 'KOLACHES TOO',      mobile: false },
+  { label: 'FAMILY OWNED',      mobile: false },
 ];
 
 function isOpenNow(): boolean {
@@ -38,7 +38,9 @@ export default function Hero() {
       <div className="bg-star-red flex justify-center overflow-hidden py-[9px]">
         <div className="flex items-center justify-center flex-wrap gap-x-10 gap-y-1 px-6 font-display text-sm tracking-[.14em] text-cream text-center">
           {TICKER_ITEMS.map((item) => (
-            <span key={item} className="whitespace-nowrap">★ {item}</span>
+            <span key={item.label} className={item.mobile ? 'whitespace-nowrap' : 'whitespace-nowrap hidden sm:inline'}>
+              ★ {item.label}
+            </span>
           ))}
         </div>
       </div>
