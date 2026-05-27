@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { ChevronRight, Clock, MapPin } from 'lucide-react';
 
 export default function Hero() {
@@ -93,19 +94,19 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <a
-              href="#menu"
+            <Link
+              href="/menu"
               className="inline-flex items-center justify-center gap-2 bg-brown text-cream text-lg font-bold px-8 py-4 rounded-full hover:bg-brown-light transition-colors shadow-lg"
             >
               View Our Menu
               <ChevronRight size={20} strokeWidth={2.5} />
-            </a>
-            <a
-              href="#locations"
+            </Link>
+            <Link
+              href="/locations"
               className="inline-flex items-center justify-center gap-2 border-2 border-brown text-brown text-lg font-bold px-8 py-4 rounded-full hover:bg-brown hover:text-cream transition-colors"
             >
               Find Us
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>
