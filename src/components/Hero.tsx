@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const TICKER_ITEMS = [
   { label: 'FRESH BAKED DAILY', mobile: true },
@@ -181,6 +182,35 @@ export default function Hero() {
           </div>
         </motion.div>
       </div>
+
+      {/* Full-width photo strip */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="relative w-full h-[260px] sm:h-[380px] lg:h-[460px] overflow-hidden"
+      >
+        <Image
+          src="/images/donut1.jpg"
+          alt="Fresh glazed donuts from Lone Star Donuts, Flatonia TX"
+          fill
+          className="object-cover object-[center_60%]"
+          sizes="100vw"
+          priority
+        />
+        {/* Gradient fade into the section above and below */}
+        <div className="absolute inset-0 bg-gradient-to-b from-espresso via-transparent to-espresso" />
+        {/* Subtle red vignette on sides */}
+        <div className="absolute inset-0 bg-gradient-to-r from-espresso/50 via-transparent to-espresso/50" />
+        {/* Centered text overlay */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
+            <p className="font-display text-cream/90 tracking-[.2em] text-sm sm:text-base drop-shadow-lg">
+              ★ &nbsp; MADE FROM SCRATCH BEFORE SUNRISE &nbsp; ★
+            </p>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

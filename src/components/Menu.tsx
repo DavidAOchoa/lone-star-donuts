@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { menuItems, categoryLabels } from '@/lib/menu';
 import { DonutCategory } from '@/lib/types';
 import DonutCard from './DonutCard';
@@ -44,6 +45,27 @@ export default function Menu() {
                 {categoryLabels[cat].toUpperCase()}
               </button>
             ))}
+          </div>
+        </div>
+
+        {/* Photo banner */}
+        <div className="relative w-full h-48 sm:h-64 overflow-hidden border border-cream/[0.06] mb-10">
+          <Image
+            src="/images/donut2.jpg"
+            alt="Assorted fresh donuts at Lone Star Donuts"
+            fill
+            className="object-cover object-[center_40%]"
+            sizes="(max-width: 1280px) 100vw, 1152px"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-espresso via-espresso/30 to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-center pl-8 sm:pl-12">
+            <p className="font-display text-star-amber tracking-[.18em] text-xs sm:text-sm mb-1">
+              BAKED FRESH DAILY
+            </p>
+            <p className="font-display text-cream leading-none tracking-[.04em]"
+              style={{ fontSize: 'clamp(28px, 4vw, 52px)' }}>
+              SOMETHING FOR<br />EVERYONE.
+            </p>
           </div>
         </div>
 

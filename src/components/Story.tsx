@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const stats = [
   { number: '36+', label: 'Years in Business' },
@@ -77,29 +78,27 @@ export default function Story() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="space-y-3"
           >
-            {/* Big feature card */}
-            <div
-              className="w-full aspect-square flex items-center justify-center relative overflow-hidden border border-cream/[0.06]"
-              style={{ background: 'linear-gradient(135deg, #251408 0%, #1C0F05 100%)' }}
-            >
-              {/* Background star */}
-              <div
-                className="absolute inset-0 flex items-center justify-center text-star-red/[0.06] font-sans leading-none select-none"
-                style={{ fontSize: '400px' }}
-                aria-hidden="true"
-              >★</div>
-              <div className="relative z-10 text-center">
-                <div className="text-[120px] leading-none mb-4" aria-hidden="true">🍩</div>
-                <div className="font-display text-4xl text-cream tracking-[.1em]">
-                  HANDCRAFTED
-                </div>
-                <div className="font-display text-2xl text-star-amber tracking-[.14em] mt-1">
-                  NEVER FROZEN
-                </div>
+            {/* Big feature photo — Flatonia main street */}
+            <div className="w-full aspect-[4/3] relative overflow-hidden border border-cream/[0.06]">
+              <Image
+                src="/images/flatonia1.jpg"
+                alt="Downtown Flatonia, Texas — home of Lone Star Donuts since 1987"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              {/* Subtle dark overlay to keep text legible */}
+              <div className="absolute inset-0 bg-espresso/25" />
+
+              {/* Top caption */}
+              <div className="absolute top-5 left-6">
+                <p className="font-display text-xs tracking-[.2em] text-cream/70">
+                  FLATONIA, TEXAS
+                </p>
               </div>
 
               {/* Est. badge */}
-              <div className="absolute bottom-6 right-6 border-2 border-star-red px-4 py-2 text-center">
+              <div className="absolute bottom-6 right-6 border-2 border-star-red px-4 py-2 text-center bg-espresso/75 backdrop-blur-sm">
                 <div className="font-display text-xs tracking-[.18em] text-cream/60">EST.</div>
                 <div className="font-display text-3xl text-star-red tracking-[.04em] leading-none">1987</div>
                 <div className="font-display text-xs tracking-[.14em] text-cream/60">FLATONIA</div>
